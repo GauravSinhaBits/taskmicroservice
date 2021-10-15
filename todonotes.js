@@ -5,8 +5,25 @@ const request = require('request');
 
 const port = process.argv.slice(2)[0];
 const app = express();
+const cors = require('cors');
 
 app.use(bodyParser.json());
+
+const corsOpts = {
+    origin: '*',
+  
+    methods: [
+      'GET',
+      'POST',
+      'DELETE',
+    ],
+  
+    allowedHeaders: [
+      'Content-Type',
+    ],
+  };
+  
+  app.use(cors(corsOpts));
 
 const mongoose = require('mongoose');
 require("./Todonote")
